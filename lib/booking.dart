@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'chack.dart'; // ✅ Import หน้า Check
 
 class BookingScreen extends StatefulWidget {
   const BookingScreen({super.key});
@@ -42,7 +43,7 @@ class _BookingScreenState extends State<BookingScreen> {
           },
         ),
       ),
-      body: SingleChildScrollView(  // ✅ แก้ไขให้ Scroll ได้
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
@@ -83,7 +84,13 @@ class _BookingScreenState extends State<BookingScreen> {
                   width: 150,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // ✅ กดปุ่มแล้วเปลี่ยนไปหน้า ChackPage
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ChackPage()),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.red,
                       shape: RoundedRectangleBorder(
@@ -146,4 +153,3 @@ class _BookingScreenState extends State<BookingScreen> {
     );
   }
 }
-

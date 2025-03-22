@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'Chack.dart';
+import 'home_screen.dart';
+import 'main.dart';
+
 class ReserveScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -9,6 +12,30 @@ class ReserveScreen extends StatelessWidget {
         children: [
           _buildHeader(),
           Expanded(child: _buildReservationList(context)),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.red,
+        unselectedItemColor: Colors.grey,
+        currentIndex: 1,
+        iconSize: 30,
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => HomeScreen()),
+            );
+          } else if (index == 2) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => MainScreen()),
+            );
+          }
+        },
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.book), label: "Reserve"),
+          BottomNavigationBarItem(icon: Icon(Icons.logout), label: "Log out"),
         ],
       ),
     );
@@ -27,12 +54,10 @@ class ReserveScreen extends StatelessWidget {
       child: Column(
         children: [
           Row(
-            children: [
- 
-            ],
+            children: [],
           ),
           SizedBox(height: 10),
-          Image.asset('assets/sports_banner.png', height: 100),
+          Image.asset('assets/images/logo.png', height: 100),
           Text(
             'PLAY RENT',
             style: TextStyle(
@@ -52,19 +77,19 @@ class ReserveScreen extends StatelessWidget {
         'sport': 'Basketball',
         'time': '9.10 AM - 12.00 PM',
         'date': '10 May 2568',
-        'icon': 'assets/basketball.png'
+        'icon': 'assets/images/sport_3343061.png'
       },
       {
         'sport': 'Football',
         'time': '11.00 AM - 14.00 PM',
         'date': '11 May 2568',
-        'icon': 'assets/football.png'
+        'icon': 'assets/images/sport_3343061.png'
       },
       {
         'sport': 'Volleyball',
         'time': '9.10 AM - 12.00 PM',
         'date': '12 June 2568',
-        'icon': 'assets/volleyball.png'
+        'icon': 'assets/images/sport_3343061.png'
       },
     ];
  

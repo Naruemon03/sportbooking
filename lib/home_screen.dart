@@ -14,15 +14,14 @@ class HomeScreen extends StatelessWidget {
         selectedItemColor: Colors.red,
         unselectedItemColor: Colors.grey,
         currentIndex: 0,
+        iconSize: 30,
         onTap: (index) {
           if (index == 1) {
-            // ✅ ไปหน้า ReserveScreen ถ้ากดปุ่ม Reserve
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => ReserveScreen()),
             );
           } else if (index == 2) {
-            // ✅ ไปหน้า MainScreen ถ้ากดปุ่ม Log out
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => MainScreen()),
@@ -36,7 +35,6 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             padding: const EdgeInsets.all(20),
@@ -50,23 +48,34 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 40),
-                Image.asset(
-                  'assets/images/logo.png',
-                  height: 80,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/logo.png',
+                      height: 80,
+                    ),
+                    const SizedBox(width: 10),
+                    const Text(
+                      'PLAY RENT',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 10),
               ],
             ),
           ),
           const SizedBox(height: 20),
-          const Center(
-            child: Text(
-              "Sports Equipment",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
+          const Text(
+            "Sports Equipment",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          const Divider(indent: 50, endIndent: 50, thickness: 1),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           Expanded(
             child: GridView.count(
               crossAxisCount: 2,
@@ -99,7 +108,7 @@ class HomeScreen extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
               color: Colors.black12,
@@ -111,11 +120,11 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(imagePath, height: 60),
+            Image.asset(imagePath, height: 70),
             const SizedBox(height: 10),
             Text(
               title,
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
           ],
         ),
@@ -123,5 +132,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
